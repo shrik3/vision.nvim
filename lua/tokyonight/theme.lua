@@ -112,7 +112,7 @@ function M.setup()
     -- Repeat        = { }, --   for, do, while, etc.
     -- Label         = { }, --    case, default, etc.
     Operator = { fg = c.blue5 }, -- "sizeof", "+", "*", etc.
-    Keyword = { fg = c.green, style = options.styles.keywords }, --  any other keyword
+    Keyword = { fg = c.actual_yellow0, style = options.styles.keywords }, --  any other keyword
     -- Exception     = { }, --  try, catch, throw
 
     -- PreProc = { fg = c.cyan }, -- (preferred) generic Preprocessor
@@ -165,8 +165,8 @@ function M.setup()
     markdownLinkText = { fg = c.blue, underline = true },
 
     ["@punctuation.special.markdown"] = { fg = c.orange, bold = true },
-    ["@text.todo.unchecked"] = { fg = c.blue }, -- For brackets and parens.
-    ["@text.todo.checked"] = { fg = c.green1 }, -- For brackets and parens.
+    ["@text.todo.unchecked"] = { fg = c.bg, bg = c.yellow }, -- For brackets and parens.
+    ["@text.todo.checked"] = { fg = c.bg }, -- For brackets and parens.
     ["@text.literal.markdown_inline"] = { bg = c.terminal_black, fg = c.blue },
 
     debugPC = { bg = c.bg_sidebar }, -- used for highlighting the current line in terminal-debug
@@ -213,6 +213,9 @@ function M.setup()
     -- TSBoolean           = { };    -- For booleans.
     -- TSCharacter         = { };    -- For characters.
     -- TSComment           = { };    -- For comment blocks.
+    -- TSFuncMacro         = {fg=c.lightgreen},    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
+    -- TSFunction          = {fg=c.lightgreen},    -- For function (calls and definitions).
+    -- TSMethod            = {fg=c.lightgreen},    -- For method calls and definitions.
     TSNote = { fg = c.bg, bg = c.info },
     ["@text.warning"] = { fg = c.bg, bg = c.warning },
     ["@text.danger"] = { fg = c.bg, bg = c.error },
@@ -225,19 +228,16 @@ function M.setup()
     -- TSException         = { };    -- For exception related keywords.
     ["@field"] = { fg = c.green1 }, -- For fields.
     -- TSFloat             = { };    -- For floats.
-    -- TSFunction          = { };    -- For function (calls and definitions).
     -- TSFuncBuiltin       = { };    -- For builtin functions: `table.insert` in Lua.
-    -- TSFuncMacro         = { };    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
     -- TSInclude           = { };    -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
-    ["@keyword"] = { fg = c.purple, style = options.styles.keywords }, -- For keywords that don't fall in previous categories.
+    ["@keyword"] = { fg = c.actual_yellow0, style = options.styles.keywords, bold=true}, -- For keywords that don't fall in previous categories.
     ["@keyword.function"] = { fg = c.magenta, style = options.styles.functions }, -- For keywords used to define a fuction.
-    ["@label"] = { fg = c.blue }, -- For labels: `label:` in C and `:label:` in Lua.
-    -- TSMethod            = { };    -- For method calls and definitions.
+    ["@label"] = { fg = c.actual_yellow0 }, -- For labels: `label:` in C and `:label:` in Lua.
     -- TSNamespace         = { };    -- For identifiers referring to modules and namespaces.
     -- TSNone              = { };    -- TODO: docs
     -- TSNumber            = { };    -- For all numbers
-    ["@operator"] = { fg = c.blue5 }, -- For any operator: `+`, but also `->` and `*` in C.
-    ["@parameter"] = { fg = c.yellow }, -- For parameters of a function.
+    ["@operator"] = { fg = c.fg }, -- For any operator: `+`, but also `->` and `*` in C.
+    ["@parameter"] = { fg = c.fg }, -- For parameters of a function.
     -- TSParameterReference= { };    -- For references to parameters of a function.
     ["@property"] = { fg = c.green1 }, -- Same as `TSField`.
     ["@punctuation.delimiter"] = { fg = c.blue5 }, -- For delimiters ie: `.`
