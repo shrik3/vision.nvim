@@ -7,22 +7,6 @@ A dark and light Neovim theme written in Lua ported from the Visual Studio Code
 [TokyoNight](https://github.com/enkia/tokyo-night-vscode-theme) theme. Includes
 extra themes for Kitty, Alacritty, iTerm and Fish.
 
-## Storm
-
-![image](https://user-images.githubusercontent.com/292349/115295095-3a9e5080-a10e-11eb-9aed-6054488c46ce.png)
-
-## Night
-
-![image](https://user-images.githubusercontent.com/292349/115295327-7afdce80-a10e-11eb-89b3-2591262bf95a.png)
-
-## Moon
-
-![image](https://user-images.githubusercontent.com/292349/190951628-10ba28a1-57ff-4479-8eab-47400a402242.png)
-
-## Day
-
-![image](https://user-images.githubusercontent.com/292349/115996270-78c6c480-a593-11eb-8ed0-7d1400b058f5.png)
-
 ## ✨ Features
 
 - supports the latest Neovim 5.0 features like TreeSitter and LSP
