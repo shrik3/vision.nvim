@@ -1,5 +1,8 @@
-# 🏙 Tokyo Night
+# 🏙 Tokyo Night but color-blind friendly
 
+This is a fork of [folke's tokyonight.nvim](https://github.com/folke/tokyonight.nvim). I enjoyed this theme but as someone who has colorblindness, some colors are difficult for me to distinguish or read. I hence made some modifications to please my own eyes. 
+
+---
 A dark and light Neovim theme written in Lua ported from the Visual Studio Code
 [TokyoNight](https://github.com/enkia/tokyo-night-vscode-theme) theme. Includes
 extra themes for Kitty, Alacritty, iTerm and Fish.
