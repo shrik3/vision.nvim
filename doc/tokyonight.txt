@@ -1,13 +1,9 @@
-*tokyonight.txt*         For NVIM v0.5.0         Last change: 2022 December 06
+*tokyonight.txt*         For NVIM v0.5.0         Last change: 2022 December 09
 
 ==============================================================================
 Table of Contents                               *tokyonight-table-of-contents*
 
-1. 🏙 Tokyo Night                              |tokyonight-🏙-tokyo-night|
-  - Storm                                                   |tokyonight-storm|
-  - Night                                                   |tokyonight-night|
-  - Moon                                                     |tokyonight-moon|
-  - Day                                                       |tokyonight-day|
+1. 🏙 Tokyo Night but color-blind friendly|tokyonight-🏙-tokyo-night-but-color-blind-friendly|
   - ✨ Features                                     |tokyonight-✨-features|
   - ⚡️ Requirements                       |tokyonight-⚡️-requirements|
   - 📦 Installation                           |tokyonight-📦-installation|
@@ -18,39 +14,23 @@ Table of Contents                               *tokyonight-table-of-contents*
   - 🔥 Contributing                           |tokyonight-🔥-contributing|
 
 ==============================================================================
-1. 🏙 Tokyo Night                              *tokyonight-🏙-tokyo-night*
+1. 🏙 Tokyo Night but color-blind friendly*tokyonight-🏙-tokyo-night-but-color-blind-friendly*
+
+This is a fork of folke’s tokyonight.nvim
+<https://github.com/folke/tokyonight.nvim>. I enjoyed this theme but as someone
+who has colorblindness, some colors are difficult for me to distinguish or
+read. I hence made some modifications to please my own eyes.
+
+<div class="figure">
+<img src="https://github.com/shrik3/schnitzel.nvim/blob/master/preview.png" title="fig:"/>
+<p class="caption">preview</p>
+</div>
+
+------------------------------------------------------------------------------
 
 A dark and light Neovim theme written in Lua ported from the Visual Studio Code
 TokyoNight <https://github.com/enkia/tokyo-night-vscode-theme> theme. Includes
 extra themes for Kitty, Alacritty, iTerm and Fish.
-
-STORM                                                       *tokyonight-storm*
-
-<div class="figure">
-<img src="https://user-images.githubusercontent.com/292349/115295095-3a9e5080-a10e-11eb-9aed-6054488c46ce.png" title="fig:"/>
-<p class="caption">image</p>
-</div>
-
-NIGHT                                                       *tokyonight-night*
-
-<div class="figure">
-<img src="https://user-images.githubusercontent.com/292349/115295327-7afdce80-a10e-11eb-89b3-2591262bf95a.png" title="fig:"/>
-<p class="caption">image</p>
-</div>
-
-MOON                                                         *tokyonight-moon*
-
-<div class="figure">
-<img src="https://user-images.githubusercontent.com/292349/190951628-10ba28a1-57ff-4479-8eab-47400a402242.png" title="fig:"/>
-<p class="caption">image</p>
-</div>
-
-DAY                                                           *tokyonight-day*
-
-<div class="figure">
-<img src="https://user-images.githubusercontent.com/292349/115996270-78c6c480-a593-11eb-8ed0-7d1400b058f5.png" title="fig:"/>
-<p class="caption">image</p>
-</div>
 
 ✨ FEATURES                                         *tokyonight-✨-features*
 
@@ -104,14 +84,14 @@ Install the theme with your preferred package manager:
 vim-plug <https://github.com/junegunn/vim-plug>
 
 >
-    Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+    Plug 'shrik3/tokyonight.nvim', { 'branch': 'main' }
 <
 
 
 packer <https://github.com/wbthomason/packer.nvim>
 
 >
-    use 'folke/tokyonight.nvim'
+    use 'shrik3/tokyonight.nvim'
 <
 
 
@@ -124,10 +104,6 @@ Enable the colorscheme:
     colorscheme tokyonight
     
     " There are also colorschemes for the different styles
-    colorscheme tokyonight-night
-    colorscheme tokyonight-storm
-    colorscheme tokyonight-day
-    colorscheme tokyonight-moon
 <
 
 
