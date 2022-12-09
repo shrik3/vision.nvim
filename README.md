@@ -2,6 +2,8 @@
 
 This is a fork of [folke's tokyonight.nvim](https://github.com/folke/tokyonight.nvim). I enjoyed this theme but as someone who has colorblindness, some colors are difficult for me to distinguish or read. I hence made some modifications to please my own eyes. 
 
+![preview](https://github.com/shrik3/schnitzel.nvim/blob/master/preview.png)
+
 ---
 A dark and light Neovim theme written in Lua ported from the Visual Studio Code
 [TokyoNight](https://github.com/enkia/tokyo-night-vscode-theme) theme. Includes
@@ -53,13 +55,13 @@ Install the theme with your preferred package manager:
 [vim-plug](https://github.com/junegunn/vim-plug)
 
 ```vim
-Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'shrik3/tokyonight.nvim', { 'branch': 'main' }
 ```
 
 [packer](https://github.com/wbthomason/packer.nvim)
 
 ```lua
-use 'folke/tokyonight.nvim'
+use 'shrik3/tokyonight.nvim'
 ```
 
 ## 🚀 Usage
