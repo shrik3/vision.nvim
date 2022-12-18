@@ -96,15 +96,15 @@ function M.setup()
     -- default,
     -- Uncomment and edit if you want more specific syntax highlighting.
 
-    Constant = { fg = c.orange }, -- (preferred) any constant
+    Constant = { fg = c.green }, -- (preferred) any constant
     String = { fg = c.green }, --   a string constant: "this is a string"
     Character = { fg = c.green }, --  a character constant: 'c', '\n'
     -- Number        = { }, --   a number constant: 234, 0xff
     -- Boolean       = { }, --  a boolean constant: TRUE, false
     -- Float         = { }, --    a floating point constant: 2.3e10
 
-    Identifier = { fg = c.magenta, style = options.styles.variables }, -- (preferred) any variable name
-    Function = { fg = c.blue, style = options.styles.functions }, -- function name (also: methods for classes)
+    Identifier = { fg = c.blue0, style = options.styles.variables }, -- (preferred) any variable name
+    Function = { fg = c.blue0, style = options.styles.functions }, -- function name (also: methods for classes)
 
     -- Statement = { fg = c.magenta }, -- (preferred) any statement
     Statement = { fg = c.actual_yellow0, bold=true }, -- (preferred) any statement
@@ -119,10 +119,10 @@ function M.setup()
     PreProc = { fg = c.lightgreen }, -- (preferred) generic Preprocessor
     -- Include       = { }, --  preprocessor #include
     -- Define        = { }, --   preprocessor #define
-    -- Macro         = { }, --    same as Define
+    Macro         = {fg = c.lightgreen }, --    same as Define
     -- PreCondit     = { }, --  preprocessor #if, #else, #endif, etc.
 
-    Type = { fg = c.cyan }, -- (preferred) int, long, char, etc.
+    Type = { fg = c.blue0, bold=true}, -- (preferred) int, long, char, etc.
     -- StorageClass  = { }, -- static, register, volatile, etc.
     -- Structure     = { }, --  struct, union, enum, etc.
     -- Typedef       = { }, --  A typedef
@@ -213,17 +213,17 @@ function M.setup()
     -- TSBoolean           = { };    -- For booleans.
     -- TSCharacter         = { };    -- For characters.
     -- TSComment           = { };    -- For comment blocks.
-    -- TSFuncMacro         = {fg=c.lightgreen},    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
-    -- TSFunction          = {fg=c.lightgreen},    -- For function (calls and definitions).
+    TSFuncMacro         = {fg=c.fg},    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
+    TSFunction          = {fg=c.blue0},    -- For function (calls and definitions).
     -- TSMethod            = {fg=c.lightgreen},    -- For method calls and definitions.
     TSNote = { fg = c.bg, bg = c.info },
     ["@text.warning"] = { fg = c.bg, bg = c.warning },
     ["@text.danger"] = { fg = c.bg, bg = c.error },
-    ["@constructor"] = { fg = c.magenta }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
+    ["@constructor"] = { fg = c.lightgreen }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
     -- TSConditional       = { };    -- For keywords related to conditionnals.
     -- TSConstant          = { };    -- For constants
     -- TSConstBuiltin      = { };    -- For constant that are built in the language: `nil` in Lua.
-    -- TSConstMacro        = { };    -- For constants that are defined by macros: `NULL` in C.
+    TSConstMacro        = {fg = c.lightgreen};    -- For constants that are defined by macros: `NULL` in C.
     -- TSError             = { };    -- For syntax/parser errors.
     -- TSException         = { };    -- For exception related keywords.
     ["@field"] = { fg = c.green1 }, -- For fields.
@@ -248,7 +248,7 @@ function M.setup()
     ["@string.regex"] = { fg = c.blue6 }, -- For regexes.
     ["@string.escape"] = { fg = c.magenta }, -- For escape characters within a string.
     -- TSSymbol            = { };    -- For identifiers referring to symbols or atoms.
-    -- TSType              = { };    -- For types.
+    TSType              = {fg = c.blue0, bold = true};    -- For types.
     -- TSTypeBuiltin       = { };    -- For builtin types.
     ["@variable"] = { fg = c.fg, style = options.styles.variables }, -- Any variable name that does not have another highlight.
     ["@variable.builtin"] = { fg = c.red }, -- Variable names that are defined by the languages, like `this` or `self`.
@@ -390,9 +390,9 @@ function M.setup()
     AlphaButtons = { fg = c.magenta },
 
     -- WhichKey
-    WhichKey = { fg = c.cyan },
+    WhichKey = { fg = c.fg },
     WhichKeyGroup = { fg = c.blue },
-    WhichKeyDesc = { fg = c.magenta },
+    WhichKeyDesc = { fg = c.lightgreen },
     WhichKeySeperator = { fg = c.comment },
     WhichKeySeparator = { fg = c.comment },
     WhichKeyFloat = { bg = c.bg_sidebar },
@@ -576,6 +576,19 @@ function M.setup()
     -- Yanky
     YankyPut = { link = "IncSearch" },
     YankyYanked = { link = "IncSearch" },
+
+    -- Startify
+    StartifyBracket = {fg = c.green, bg = c.none} ,
+    StartifyNumber = {fg = c.fg, bg = c.none},
+    StartifyPath = {fg = c.blue, bg = c.none},
+    StartifyFile = {fg = c.lightgreen, bg = c.none},
+    StartifyHeader = {fg = c.red , bg = c.none},
+    -- StartifyFooter  
+    -- StartifySection 
+    -- StartifySelect
+    -- StartifySlash
+    -- StartifySpecial
+
 
     -- Notify
     --- Border

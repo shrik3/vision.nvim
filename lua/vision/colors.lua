@@ -12,22 +12,22 @@ M.default = {
   bg_highlight = "#292e42",
   terminal_black = "#414868",
   -- fg = "#c0caf5",
-  fg = "#ffffff",
+  fg = "#c0bfbc",
   -- fg_dark = "#a9b1d6",
   fg_dark = "#eeffee",
   fg_gutter = "#3b4261",
   dark3 = "#545c7e",
   comment = "#565f89",
   dark5 = "#737aa2",
-  blue0 = "#3d59a1",
-  blue = "#7aa2f7",
   cyan = "#7dcfff",
-  blue1 = "#2ac3de",
-  blue2 = "#0db9d7",
-  blue5 = "#89ddff",
-  blue6 = "#b4f9f8",
+  blue0 = "#cfe0fc",
+  blue = "#b6d0fb",
+  blue1 = "#9ec1fa",
+  blue2 = "#86b2f9",
+  blue5 = "#6da2f8",
+  blue6 = "#5593f7",
   blue7 = "#394b70",
-  magenta = "#bb9af7",
+  magenta = "#ffcccc",
   magenta2 = "#ff007c",
   purple = "#9d7cd8",
   orange = "#ff9e64",
@@ -147,7 +147,7 @@ function M.setup(opts)
     or colors.bg
 
   colors.bg_visual = util.darken(colors.blue0, 0.7)
-  colors.bg_search = colors.blue0
+  colors.bg_search = colors.blue7
   colors.fg_sidebar = colors.fg_dark
   -- colors.fg_float = config.options.styles.floats == "dark" and colors.fg_dark or colors.fg
   colors.fg_float = colors.fg
