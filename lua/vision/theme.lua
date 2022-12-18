@@ -122,7 +122,7 @@ function M.setup()
     Macro         = {fg = c.lightgreen }, --    same as Define
     -- PreCondit     = { }, --  preprocessor #if, #else, #endif, etc.
 
-    Type = { fg = c.blue0, bold=true}, -- (preferred) int, long, char, etc.
+    Type = { fg = c.blue0}, -- (preferred) int, long, char, etc.
     -- StorageClass  = { }, -- static, register, volatile, etc.
     -- Structure     = { }, --  struct, union, enum, etc.
     -- Typedef       = { }, --  A typedef
@@ -230,7 +230,7 @@ function M.setup()
     -- TSFloat             = { };    -- For floats.
     -- TSFuncBuiltin       = { };    -- For builtin functions: `table.insert` in Lua.
     -- TSInclude           = { };    -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
-    ["@keyword"] = { fg = c.actual_yellow0, style = options.styles.keywords, bold=true}, -- For keywords that don't fall in previous categories.
+    ["@keyword"] = { fg = c.actual_yellow0, style = options.styles.keywords}, -- For keywords that don't fall in previous categories.
     ["@keyword.function"] = { fg = c.magenta, style = options.styles.functions }, -- For keywords used to define a fuction.
     ["@label"] = { fg = c.actual_yellow0 }, -- For labels: `label:` in C and `:label:` in Lua.
     -- TSNamespace         = { };    -- For identifiers referring to modules and namespaces.
@@ -248,11 +248,11 @@ function M.setup()
     ["@string.regex"] = { fg = c.blue6 }, -- For regexes.
     ["@string.escape"] = { fg = c.magenta }, -- For escape characters within a string.
     -- TSSymbol            = { };    -- For identifiers referring to symbols or atoms.
-    TSType              = {fg = c.blue0, bold = true};    -- For types.
+    TSType              = {fg = c.blue0};    -- For types.
     -- TSTypeBuiltin       = { };    -- For builtin types.
+    ['@type.qualifier'] = {fg = c.actual_yellow, style = options.styles.keywords},
     ["@variable"] = { fg = c.fg, style = options.styles.variables }, -- Any variable name that does not have another highlight.
     ["@variable.builtin"] = { fg = c.red }, -- Variable names that are defined by the languages, like `this` or `self`.
-
     -- TSTag               = { };    -- Tags like html tag names.
     -- TSTagDelimiter      = { };    -- Tag delimiter like `<` `>` `/`
     -- TSText              = { };    -- For strings considered text in a markup language.
