@@ -326,6 +326,22 @@ function M.setup()
     NeoTreeNormal = { fg = c.fg_sidebar, bg = c.bg_sidebar },
     NeoTreeNormalNC = { fg = c.fg_sidebar, bg = c.bg_sidebar },
 
+    -- startify
+    -- StartifyBracket  |  [,]                     |  linked to Delimiter
+    -- StartifyFile     |  the actual file         |  linked to Identifier
+    -- StartifyFooter   |  the custom footer       |  linked to Title
+    -- StartifyHeader   |  the custom header       |  linked to Title
+    -- StartifyNumber   |  the numbers between []  |  linked to Number
+    -- StartifyPath     |  the path to a file      |  linked to Directory
+    -- StartifySection  |  section headers         |  linked to Statement
+    -- StartifySelect   |  selected entries        |  linked to Title
+    -- StartifySlash    |  slashes in paths        |  linked to Delimiter
+    -- StartifySpecial  |  <empty buffer>,<quit>   |  linked to Comment
+    -- StartifyVar      |  environment variables   |  linked to StartifyPath
+    StartifyHeader = {fg = c.red},
+    StartifyPath = {fg = c.lightgreen},
+    StartifyFile = {fg = c.green},
+    StartifyNumber = {fg = c.actual_yellow0},
 
     -- WhichKey
     WhichKey = { fg = c.cyan },
