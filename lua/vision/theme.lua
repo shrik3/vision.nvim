@@ -2,16 +2,6 @@ local util = require("vision.util")
 local colors = require("vision.colors")
 
 local M = {}
---
----@class Highlight
----@field fg string|nil
----@field bg string|nil
----@field sp string|nil
----@field style string|nil|Highlight
-
----@alias Highlights table<string,Highlight>
-
----@return Theme
 function M.setup()
   local config = require("vision.config")
   local options = config.options
@@ -172,111 +162,11 @@ function M.setup()
     debugPC = { bg = c.bg_sidebar }, -- used for highlighting the current line in terminal-debug
     debugBreakpoint = { bg = util.darken(c.info, 0.1), fg = c.info }, -- used for breakpoint colors in terminal-debug
 
-    -- These groups are for the native LSP client. Some other LSP clients may
-    -- use these groups, or use their own. Consult your LSP client's
-    -- documentation.
-    LspReferenceText = { bg = c.fg_gutter }, -- used for highlighting "text" references
-    LspReferenceRead = { bg = c.fg_gutter }, -- used for highlighting "read" references
-    LspReferenceWrite = { bg = c.fg_gutter }, -- used for highlighting "write" references
-    LspSignatureActiveParameter = { bg = util.darken(c.bg_visual, 0.4), bold = true },
-    LspCodeLens = { fg = c.comment },
-    LspInfoBorder = { fg = c.border_highlight, bg = c.bg_float },
-
-    DiagnosticError = { fg = c.error }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-    DiagnosticWarn = { fg = c.warning }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-    DiagnosticInfo = { fg = c.info }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-    DiagnosticHint = { fg = c.hint }, -- Used as the base highlight group. Other Diagnostic highlights link to this by default
-
-    DiagnosticVirtualTextError = { bg = util.darken(c.error, 0.1), fg = c.error }, -- Used for "Error" diagnostic virtual text
-    DiagnosticVirtualTextWarn = { bg = util.darken(c.warning, 0.1), fg = c.warning }, -- Used for "Warning" diagnostic virtual text
-    DiagnosticVirtualTextInfo = { bg = util.darken(c.info, 0.1), fg = c.info }, -- Used for "Information" diagnostic virtual text
-    DiagnosticVirtualTextHint = { bg = util.darken(c.hint, 0.1), fg = c.hint }, -- Used for "Hint" diagnostic virtual text
-
-    DiagnosticUnderlineError = { undercurl = true, sp = c.error }, -- Used to underline "Error" diagnostics
-    DiagnosticUnderlineWarn = { undercurl = true, sp = c.warning }, -- Used to underline "Warning" diagnostics
-    DiagnosticUnderlineInfo = { undercurl = true, sp = c.info }, -- Used to underline "Information" diagnostics
-    DiagnosticUnderlineHint = { undercurl = true, sp = c.hint }, -- Used to underline "Hint" diagnostics
-
     ALEErrorSign = { fg = c.error },
     ALEWarningSign = { fg = c.warning },
 
-    TreesitterContext = { bg = util.darken(c.fg_gutter, 0.8) },
     Hlargs = { fg = c.yellow },
-    -- TreesitterContext = { bg = util.darken(c.bg_visual, 0.4) },
-    -- These groups are for the neovim tree-sitter highlights.
-    -- As of writing, tree-sitter support is a WIP, group names may change.
-    -- By default, most of these groups link to an appropriate Vim group,
-    -- TSError -> Error for example, so you do not have to define these unless
-    -- you explicitly want to support Treesitter's improved syntax awareness.
 
-    -- TSAnnotation        = { };    -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
-    -- TSAttribute         = { };    -- (unstable) TODO: docs
-    -- TSBoolean           = { };    -- For booleans.
-    -- TSCharacter         = { };    -- For characters.
-    -- TSComment           = { };    -- For comment blocks.
-    -- TSFuncMacro         = {fg=c.lightgreen},    -- For macro defined fuctions (calls and definitions): each `macro_rules` in Rust.
-    -- TSFunction          = {fg=c.lightgreen},    -- For function (calls and definitions).
-    -- TSMethod            = {fg=c.lightgreen},    -- For method calls and definitions.
-    TSNote = { fg = c.bg, bg = c.info },
-    ["@text.warning"] = { fg = c.bg, bg = c.warning },
-    ["@text.danger"] = { fg = c.bg, bg = c.error },
-    ["@constructor"] = { fg = c.magenta }, -- For constructor calls and definitions: `= { }` in Lua, and Java constructors.
-    -- TSConditional       = { };    -- For keywords related to conditionnals.
-    -- TSConstant          = { };    -- For constants
-    -- TSConstBuiltin      = { };    -- For constant that are built in the language: `nil` in Lua.
-    -- TSConstMacro        = { };    -- For constants that are defined by macros: `NULL` in C.
-    -- TSError             = { };    -- For syntax/parser errors.
-    -- TSException         = { };    -- For exception related keywords.
-    ["@field"] = { fg = c.green1 }, -- For fields.
-    -- TSFloat             = { };    -- For floats.
-    -- TSFuncBuiltin       = { };    -- For builtin functions: `table.insert` in Lua.
-    -- TSInclude           = { };    -- For includes: `#include` in C, `use` or `extern crate` in Rust, or `require` in Lua.
-    ["@keyword"] = { fg = c.actual_yellow0, style = options.styles.keywords, bold=true}, -- For keywords that don't fall in previous categories.
-    ["@keyword.function"] = { fg = c.magenta, style = options.styles.functions }, -- For keywords used to define a fuction.
-    ["@label"] = { fg = c.actual_yellow0 }, -- For labels: `label:` in C and `:label:` in Lua. TSNamespace         = { };    -- For identifiers referring to modules and namespaces.
-    -- TSNone              = { };    -- TODO: docs
-    -- TSNumber            = { };    -- For all numbers
-    ["@operator"] = { fg = c.fg }, -- For any operator: `+`, but also `->` and `*` in C.
-    ["@parameter"] = { fg = c.fg }, -- For parameters of a function.
-    -- TSParameterReference= { };    -- For references to parameters of a function.
-    ["@property"] = { fg = c.green1 }, -- Same as `TSField`.
-    ["@punctuation.delimiter"] = { fg = c.blue5 }, -- For delimiters ie: `.`
-    ["@punctuation.bracket"] = { fg = c.fg_dark }, -- For brackets and parens.
-    ["@punctuation.special"] = { fg = c.blue5 }, -- For special punctutation that does not fall in the catagories before.
-    -- TSRepeat            = { };    -- For keywords related to loops.
-    -- TSString            = { };    -- For strings.
-    ["@string.regex"] = { fg = c.blue6 }, -- For regexes.
-    ["@string.escape"] = { fg = c.magenta }, -- For escape characters within a string.
-    -- TSSymbol            = { };    -- For identifiers referring to symbols or atoms.
-    -- TSType              = { };    -- For types.
-    -- TSTypeBuiltin       = { };    -- For builtin types.
-    ["@variable"] = { fg = c.fg, style = options.styles.variables }, -- Any variable name that does not have another highlight.
-    ["@variable.builtin"] = { fg = c.red }, -- Variable names that are defined by the languages, like `this` or `self`.
-
-    -- TSTag               = { };    -- Tags like html tag names.
-    -- TSTagDelimiter      = { };    -- Tag delimiter like `<` `>` `/`
-    -- TSText              = { };    -- For strings considered text in a markup language.
-    ["@text.reference"] = { fg = c.teal },
-    -- TSEmphasis          = { };    -- For text to be represented with emphasis.
-    -- TSUnderline         = { };    -- For text to be represented with an underline.
-    -- TSStrike            = { };    -- For strikethrough text.
-    -- TSTitle             = { };    -- Text that is part of a title.
-    -- TSLiteral           = { };    -- Literal text.
-    -- TSURI               = { };    -- Any URI like a link or email.
-    ["@text.diff.add"] = { link = "DiffAdd" },
-    ["@text.diff.delete"] = { link = "DiffDelete" },
-
-    -- Lua
-    -- luaTSProperty = { fg = c.red }, -- Same as `TSField`.
-
-    -- ts-rainbow
-    rainbowcol1 = { fg = c.red },
-    rainbowcol2 = { fg = c.yellow },
-    rainbowcol3 = { fg = c.green },
-    rainbowcol4 = { fg = c.teal },
-    rainbowcol5 = { fg = c.blue },
-    rainbowcol6 = { fg = c.magenta },
-    rainbowcol7 = { fg = c.purple },
 
 
     -- diff
@@ -336,27 +226,6 @@ function M.setup()
     WhichKeyFloat = { bg = c.bg_sidebar },
     WhichKeyValue = { fg = c.dark5 },
 
-    -- LspSaga
-    DiagnosticWarning = { link = "DiagnosticWarn" },
-    DiagnosticInformation = { link = "DiagnosticInfo" },
-
-    LspFloatWinNormal = { bg = c.bg_float },
-    LspFloatWinBorder = { fg = c.border_highlight },
-    LspSagaBorderTitle = { fg = c.cyan },
-    LspSagaHoverBorder = { fg = c.blue },
-    LspSagaRenameBorder = { fg = c.green },
-    LspSagaDefPreviewBorder = { fg = c.green },
-    LspSagaCodeActionBorder = { fg = c.blue },
-    LspSagaFinderSelection = { fg = c.bg_visual },
-    LspSagaCodeActionTitle = { fg = c.blue1 },
-    LspSagaCodeActionContent = { fg = c.purple },
-    LspSagaSignatureHelpBorder = { fg = c.red },
-    ReferencesCount = { fg = c.purple },
-    DefinitionCount = { fg = c.purple },
-    DefinitionIcon = { fg = c.blue },
-    ReferencesIcon = { fg = c.blue },
-    TargetWord = { fg = c.cyan },
-
     -- NeoVim
     healthError = { fg = c.error },
     healthSuccess = { fg = c.green1 },
@@ -365,81 +234,8 @@ function M.setup()
     -- BufferLine
     BufferLineIndicatorSelected = { fg = c.git.change },
 
-
-    TSNodeKey = { fg = c.magenta2, bold = true },
-    TSNodeUnmatched = { fg = c.dark3 },
-
-
-    -- Cmp
-    CmpDocumentation = { fg = c.fg, bg = c.bg_float },
-    CmpDocumentationBorder = { fg = c.border_highlight, bg = c.bg_float },
-
-    CmpItemAbbr = { fg = c.fg, bg = c.none },
-    CmpItemAbbrDeprecated = { fg = c.fg_gutter, bg = c.none, strikethrough = true },
-    CmpItemAbbrMatch = { fg = c.blue1, bg = c.none },
-    CmpItemAbbrMatchFuzzy = { fg = c.blue1, bg = c.none },
-
-    CmpItemMenu = { fg = c.comment, bg = c.none },
-
-    CmpItemKindDefault = { fg = c.fg_dark, bg = c.none },
-
-    CmpItemKindKeyword = { fg = c.cyan, bg = c.none },
-
-    CmpItemKindVariable = { fg = c.magenta, bg = c.none },
-    CmpItemKindConstant = { fg = c.magenta, bg = c.none },
-    CmpItemKindReference = { fg = c.magenta, bg = c.none },
-    CmpItemKindValue = { fg = c.magenta, bg = c.none },
-
-    CmpItemKindFunction = { fg = c.blue, bg = c.none },
-    CmpItemKindMethod = { fg = c.blue, bg = c.none },
-    CmpItemKindConstructor = { fg = c.blue, bg = c.none },
-
-    CmpItemKindClass = { fg = c.orange, bg = c.none },
-    CmpItemKindInterface = { fg = c.orange, bg = c.none },
-    CmpItemKindStruct = { fg = c.orange, bg = c.none },
-    CmpItemKindEvent = { fg = c.orange, bg = c.none },
-    CmpItemKindEnum = { fg = c.orange, bg = c.none },
-    CmpItemKindUnit = { fg = c.orange, bg = c.none },
-
-    CmpItemKindModule = { fg = c.yellow, bg = c.none },
-
-    CmpItemKindProperty = { fg = c.green1, bg = c.none },
-    CmpItemKindField = { fg = c.green1, bg = c.none },
-    CmpItemKindTypeParameter = { fg = c.green1, bg = c.none },
-    CmpItemKindEnumMember = { fg = c.green1, bg = c.none },
-    CmpItemKindOperator = { fg = c.green1, bg = c.none },
-    CmpItemKindSnippet = { fg = c.dark5, bg = c.none },
-
-
     IndentBlanklineChar = { fg = c.fg_gutter, nocombine = true },
     IndentBlanklineContextChar = { fg = c.purple, nocombine = true },
-
-    -- Scrollbar
-    ScrollbarHandle = { fg = c.none, bg = c.bg_highlight },
-
-    ScrollbarSearchHandle = { fg = c.orange, bg = c.bg_highlight },
-    ScrollbarSearch = { fg = c.orange, bg = c.none },
-
-    ScrollbarErrorHandle = { fg = c.error, bg = c.bg_highlight },
-    ScrollbarError = { fg = c.error, bg = c.none },
-
-    ScrollbarWarnHandle = { fg = c.warning, bg = c.bg_highlight },
-    ScrollbarWarn = { fg = c.warning, bg = c.none },
-
-    ScrollbarInfoHandle = { fg = c.info, bg = c.bg_highlight },
-    ScrollbarInfo = { fg = c.info, bg = c.none },
-
-    ScrollbarHintHandle = { fg = c.hint, bg = c.bg_highlight },
-    ScrollbarHint = { fg = c.hint, bg = c.none },
-
-    ScrollbarMiscHandle = { fg = c.purple, bg = c.bg_highlight },
-    ScrollbarMisc = { fg = c.purple, bg = c.none },
-
-    -- Yanky
-    YankyPut = { link = "IncSearch" },
-    YankyYanked = { link = "IncSearch" },
-
-
   }
 
   if not vim.diagnostic then
@@ -478,10 +274,6 @@ function M.setup()
 
   options.on_highlights(theme.highlights, theme.colors)
 
-  if config.is_day() then
-    util.invert_colors(theme.colors)
-    util.invert_highlights(theme.highlights)
-  end
 
   return theme
 end

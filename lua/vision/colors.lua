@@ -155,11 +155,7 @@ function M.setup(opts)
   colors.warning = colors.yellow
   colors.info = colors.blue2
   colors.hint = colors.teal
-
   config.options.on_colors(colors)
-  if opts.transform and config.is_day() then
-    util.invert_colors(colors)
-  end
 
   return colors
 end

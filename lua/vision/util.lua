@@ -1,5 +1,3 @@
-local ts = require("vision.treesitter")
-
 local M = {}
 
 M.bg = "#000000"
@@ -36,61 +34,7 @@ function M.lighten(hex, amount, fg)
   return M.blend(hex, fg or M.fg, amount)
 end
 
-function M.invert_color(color)
-  local hsluv = require("vision.hsluv")
-  if color ~= "NONE" then
-    local hsl = hsluv.hex_to_hsluv(color)
-    hsl[3] = 100 - hsl[3]
-    if hsl[3] < 40 then
-      hsl[3] = hsl[3] + (100 - hsl[3]) * M.day_brightness
-    end
-    return hsluv.hsluv_to_hex(hsl)
-  end
-  return color
-end
 
----@param group string
-function M.highlight(group, hl)
-  group = ts.get(group)
-  if not group then
-    return
-  end
-  if hl.style then
-    if type(hl.style) == "table" then
-      hl = vim.tbl_extend("force", hl, hl.style)
-    elseif hl.style:lower() ~= "none" then
-      -- handle old string style definitions
-      for s in string.gmatch(hl.style, "([^,]+)") do
-        hl[s] = true
-      end
-    end
-    hl.style = nil
-  end
-  vim.api.nvim_set_hl(0, group, hl)
-end
-
---- Delete the autocmds when the theme changes to something else
-function M.onColorScheme()
-  vim.cmd([[autocmd! vision]])
-  vim.cmd([[augroup! vision]])
-end
-
----@param config Config
-function M.autocmds(config)
-  vim.cmd([[augroup vision]])
-  vim.cmd([[  autocmd!]])
-  vim.cmd([[  autocmd ColorSchemePre * lua require("vision.util").onColorScheme()]])
-
-  vim.cmd(
-    [[  autocmd FileType ]]
-      .. table.concat(config.sidebars, ",")
-      .. [[ setlocal winhighlight=Normal:NormalSB,SignColumn:SignColumnSB]]
-  )
-  if vim.tbl_contains(config.sidebars, "terminal") then
-    vim.cmd([[  autocmd TermOpen * setlocal winhighlight=Normal:NormalSB,SignColumn:SignColumnSB]])
-  end
-  vim.cmd([[augroup end]])
-end
 
 -- Simple string interpolation.
 --
@@ -112,62 +56,6 @@ function M.syntax(syntax)
   end
 end
 
----@param colors ColorScheme
-function M.terminal(colors)
-  -- dark
-  vim.g.terminal_color_0 = colors.black
-  vim.g.terminal_color_8 = colors.terminal_black
-
-  -- light
-  vim.g.terminal_color_7 = colors.fg_dark
-  vim.g.terminal_color_15 = colors.fg
-
-  -- colors
-  vim.g.terminal_color_1 = colors.red
-  vim.g.terminal_color_9 = colors.red
-
-  vim.g.terminal_color_2 = colors.green
-  vim.g.terminal_color_10 = colors.green
-
-  vim.g.terminal_color_3 = colors.yellow
-  vim.g.terminal_color_11 = colors.yellow
-
-  vim.g.terminal_color_4 = colors.blue
-  vim.g.terminal_color_12 = colors.blue
-
-  vim.g.terminal_color_5 = colors.magenta
-  vim.g.terminal_color_13 = colors.magenta
-
-  vim.g.terminal_color_6 = colors.cyan
-  vim.g.terminal_color_14 = colors.cyan
-end
-
----@param colors ColorScheme
-function M.invert_colors(colors)
-  if type(colors) == "string" then
-    ---@diagnostic disable-next-line: return-type-mismatch
-    return M.invert_color(colors)
-  end
-  for key, value in pairs(colors) do
-    colors[key] = M.invert_colors(value)
-  end
-  return colors
-end
-
----@param hls Highlights
-function M.invert_highlights(hls)
-  for _, hl in pairs(hls) do
-    if hl.fg then
-      hl.fg = M.invert_color(hl.fg)
-    end
-    if hl.bg then
-      hl.bg = M.invert_color(hl.bg)
-    end
-    if hl.sp then
-      hl.sp = M.invert_color(hl.sp)
-    end
-  end
-end
 
 ---@param theme Theme
 function M.load(theme)
@@ -179,9 +67,6 @@ function M.load(theme)
   vim.o.termguicolors = true
   vim.g.colors_name = "vision"
 
-  if ts.new_style() then
-    M.syntax(ts.defaults)
-  end
 
   M.syntax(theme.highlights)
 
