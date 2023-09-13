@@ -6,9 +6,9 @@ local M = {}
 M.default = {
   none = "NONE",
   -- bg_dark = "#1f2335",
-  bg_dark = "#010505",
+  bg_dark = "#000022",
   -- bg = "#24283b",
-  bg = "#020808",
+  bg = "#000022",
   bg_highlight = "#292e42",
   terminal_black = "#414868",
   -- fg = "#c0caf5",
@@ -20,7 +20,7 @@ M.default = {
   comment = "#565f89",
   dark5 = "#737aa2",
   blue0 = "#3d59a1",
-  blue = "#7aa2f7",
+  blue = "#7aa2ee",
   cyan = "#7dcfff",
   blue1 = "#2ac3de",
   blue2 = "#0db9d7",
@@ -55,52 +55,6 @@ M.night = {
 }
 M.day = M.night
 
-M.moon = function()
-  local ret = {
-    none = "NONE",
-    bg_dark = "#1e2030", --
-    bg = "#000000", --
-    bg_highlight = "#2f334d", --
-    terminal_black = "#444a73", --
-    fg = "#c8d3f5", --
-    fg_dark = "#828bb8", --
-    fg_gutter = "#3b4261",
-    dark3 = "#545c7e",
-    comment = "#7a88cf", --
-    dark5 = "#737aa2",
-    blue0 = "#3e68d7", --
-    blue = "#82aaff", --
-    cyan = "#65bca8",
-    blue1 = "#65bcff", --
-    blue2 = "#0db9d7",
-    blue5 = "#89ddff",
-    blue6 = "#b4f9f8", --
-    blue7 = "#394b70",
-    purple = "#fca7ea", --
-    magenta2 = "#ff007c",
-    magenta = "#c099ff", --
-    orange = "#ff966c", --
-    yellow = "#ffc777", --
-    green = "#c3e88d", --
-    green1 = "#4fd6be", --
-    green2 = "#41a6b5",
-    teal = "#4fd6be", --
-    red = "#ff757f", --
-    red1 = "#c53b53", --
-  }
-  ret.comment = util.blend(ret.comment, ret.bg, "bb")
-  ret.git = {
-    change = util.blend(ret.blue, ret.bg, "ee"),
-    add = util.blend(ret.green, ret.bg, "ee"),
-    delete = util.blend(ret.red, ret.bg, "dd"),
-  }
-  ret.gitSigns = {
-    change = util.blend(ret.blue, ret.bg, "66"),
-    add = util.blend(ret.green, ret.bg, "66"),
-    delete = util.blend(ret.red, ret.bg, "aa"),
-  }
-  return ret
-end
 
 ---@return ColorScheme
 function M.setup(opts)
