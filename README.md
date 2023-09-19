@@ -1,3 +1,6 @@
+# archived
+I'll continue the colorscheme with my [fork of alabaster](https://github.com/shrik3/alabaster.nvim).
+
 # 🏙 Tokyo Night but color-blind friendly
 
 This is a fork of [folke's tokyonight.nvim](https://github.com/folke/tokyonight.nvim). I enjoyed this theme but as someone who has colorblindness, some colors are difficult for me to distinguish or read. I hence made some modifications to please my own eyes. 
